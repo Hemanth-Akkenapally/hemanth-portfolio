@@ -478,7 +478,7 @@ export default function Home() {
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             <div className="card reveal p-7">
               <p className="text-[15px] leading-8 text-slate-300">
-                I completed my Master&apos;s in Data Science at UMBC and built experience across analytics,
+                I completed my Master&apos;s in Data Science from UMBC and built experience across analytics,
                 reporting, ETL workflows, cloud data platforms, dashboarding, validation, and technical systems.
                 My background lets me work across both business-facing and engineering-focused environments.
               </p>
