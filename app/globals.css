@@ -21,6 +21,7 @@ body {
   font-family: var(--font-figtree), sans-serif;
   background: #0d1624;
   color: #e2e8f4;
+  min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -45,44 +46,16 @@ h1, h2, h3, h4, h5 {
   background: #0d1624;
 }
 
-.orb {
+.rf-field-background {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  pointer-events: none;
-  will-change: transform;
-}
-
-.orb-1 {
-  width: 520px; height: 520px;
-  background: radial-gradient(circle, rgba(56,189,248,0.18) 0%, transparent 70%);
-  top: -160px; left: -120px;
-  animation: float1 12s ease-in-out infinite;
-}
-.orb-2 {
-  width: 380px; height: 380px;
-  background: radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 70%);
-  bottom: 15%; right: -100px;
-  animation: float2 15s ease-in-out infinite;
-}
-.orb-3 {
-  width: 260px; height: 260px;
-  background: radial-gradient(circle, rgba(139,92,246,0.10) 0%, transparent 70%);
-  top: 55%; left: 40%;
-  animation: float1 18s ease-in-out infinite reverse;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.72;
 }
 
 /* ── Keyframes ──────────────────────────────────────── */
-@keyframes float1 {
-  0%,100% { transform: translate(0, 0); }
-  40%     { transform: translate(30px, -40px); }
-  70%     { transform: translate(-20px, 25px); }
-}
-@keyframes float2 {
-  0%,100% { transform: translate(0, 0); }
-  35%     { transform: translate(-30px, -25px); }
-  70%     { transform: translate(20px, 35px); }
-}
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -145,7 +118,7 @@ h1, h2, h3, h4, h5 {
 
 /* ── Card ───────────────────────────────────────────── */
 .card {
-  @apply rounded-2xl;
+  @apply rounded-lg;
   border: 1px solid var(--border);
   background: var(--surface);
   backdrop-filter: blur(12px);
@@ -248,7 +221,7 @@ h1, h2, h3, h4, h5 {
 
 /* ── Stat card ──────────────────────────────────────── */
 .stat-card {
-  @apply rounded-2xl p-5 text-center;
+  @apply rounded-lg p-5 text-center;
   border: 1px solid var(--border);
   background: rgba(56,189,248,0.04);
   transition: all 0.3s;
@@ -269,7 +242,7 @@ h1, h2, h3, h4, h5 {
   letter-spacing: 0.22em;
 }
 .section-title {
-  @apply mt-2 text-3xl md:text-4xl font-bold tracking-tight;
+  @apply mt-2 text-3xl md:text-4xl font-bold;
   font-family: var(--font-fraunces), serif;
 }
 .section-subtitle {
@@ -301,4 +274,292 @@ h1, h2, h3, h4, h5 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Multi-page portfolio */
+.brand-mark {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 6px;
+  color: #7dd3fc;
+  font-size: 0.75rem;
+  letter-spacing: 0;
+}
+
+.icon-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #e2e8f0;
+  font-size: 1.25rem;
+}
+
+.button-primary,
+.button-secondary {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.9rem;
+  font-weight: 650;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.button-primary {
+  background: #38bdf8;
+  color: #07111f;
+}
+.button-primary:hover { background: #7dd3fc; }
+
+.button-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: #f8fafc;
+}
+.button-secondary:hover { border-color: rgba(125, 211, 252, 0.45); }
+
+.eyebrow-pill,
+.direction-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.07);
+  color: #bae6fd;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.profile-map {
+  position: relative;
+  min-height: 31rem;
+  width: 100%;
+  max-width: 34rem;
+  margin-inline: auto;
+}
+
+.profile-map-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 10rem;
+  height: 10rem;
+  overflow: hidden;
+  border: 2px solid rgba(125, 211, 252, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 10px rgba(56, 189, 248, 0.05);
+}
+
+.profile-map-axis {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: rgba(125, 211, 252, 0.16);
+  transform: translate(-50%, -50%);
+}
+.profile-map-axis-horizontal { width: 78%; height: 1px; }
+.profile-map-axis-vertical { width: 1px; height: 78%; }
+
+.profile-node {
+  position: absolute;
+  z-index: 3;
+  width: 9.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(10, 23, 39, 0.88);
+  padding: 0.8rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+}
+.profile-node strong { display: block; color: #7dd3fc; font-size: 0.8rem; }
+.profile-node span { display: block; margin-top: 0.2rem; color: #cbd5e1; font-size: 0.72rem; }
+.profile-node-top { left: 50%; top: 1.25rem; transform: translateX(-50%); }
+.profile-node-right { right: 0; top: 50%; transform: translateY(-50%); }
+.profile-node-bottom { bottom: 1.25rem; left: 50%; transform: translateX(-50%); }
+.profile-node-left { left: 0; top: 50%; transform: translateY(-50%); }
+
+.metric-cell {
+  display: flex;
+  min-height: 7rem;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.25rem;
+  text-align: center;
+}
+.metric-cell:last-child { border-right: 0; }
+.metric-cell strong { font-size: 1.7rem; color: #f8fafc; }
+.metric-cell span { margin-top: 0.25rem; color: #94a3b8; font-size: 0.78rem; }
+
+.research-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(9, 20, 35, 0.7);
+  padding: 2rem 1.25rem;
+}
+
+.research-stage {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding-inline: 0.65rem;
+  text-align: center;
+}
+.research-stage-node {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: 3.2rem;
+  height: 3.2rem;
+  place-items: center;
+  border: 1px solid rgba(125, 211, 252, 0.42);
+  border-radius: 50%;
+  background: #0e1b2d;
+  color: #7dd3fc;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.research-stage h3 { color: #f8fafc; font-size: 0.95rem; font-weight: 700; }
+.research-stage p { margin-top: 0.3rem; color: #94a3b8; font-size: 0.72rem; line-height: 1.5; }
+.research-connector {
+  position: absolute;
+  left: calc(50% + 1.6rem);
+  top: 1.6rem;
+  width: calc(100% - 3.2rem);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.5), rgba(34, 197, 94, 0.35));
+}
+
+.route-card {
+  display: flex;
+  min-height: 16rem;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  padding: 1.5rem;
+  transition: border-color 0.2s, background-color 0.2s, transform 0.2s;
+}
+.route-card:hover { transform: translateY(-3px); border-color: rgba(125, 211, 252, 0.4); background: rgba(56, 189, 248, 0.06); }
+.route-card > span { color: #7dd3fc; font-size: 0.75rem; font-weight: 700; }
+.route-card h2 { margin-top: 1.5rem; color: #f8fafc; font-size: 1.7rem; }
+.route-card p { margin-top: 0.75rem; flex: 1; color: #94a3b8; font-size: 0.9rem; line-height: 1.7; }
+.route-card strong { margin-top: 1.25rem; color: #7dd3fc; font-size: 0.8rem; }
+
+.focus-row {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  gap: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+}
+.focus-row > span { color: #7dd3fc; font-size: 0.72rem; font-weight: 700; }
+.focus-row h3 { color: #f8fafc; font-size: 1rem; font-weight: 700; }
+.focus-row p { margin-top: 0.35rem; color: #94a3b8; font-size: 0.78rem; line-height: 1.6; }
+
+.evidence-panel,
+.publication-panel,
+.n�ם��G����ƭy�iagram } from "../../components/ResearchSystemDiagram";
+import { publications } from "../../lib/data";
+
+export const metadata = {
+  title: "Research | Hemanth Akkenapally",
+  description: "RF catheter research, experimental signal analysis, machine learning, and antenna publications by Hemanth Akkenapally.",
+};
+
+const RESEARCH_LAYERS = [
+  {
+    code: "SIM",
+    title: "Electromagnetic design",
+    points: ["Catheter electrodes and assemblies in Ansys HFSS", "Design evaluation before manufacturing release"],
+  },
+  {
+    code: "MEAS",
+    title: "Experimental measurement",
+    points: ["VNA S-parameters across power and frequency", "Oscilloscope, telemetry, and experimental metadata"],
+  },
+  {
+    code: "MODEL",
+    title: "Signal and model interpretation",
+    points: ["Ninth-order low-pass filtering", "Predictive analysis of lesion depth and microbubble formation"],
+  },
+];
+
+export default function ResearchPage() {
+  return (
+    <main>
+      <PageIntro
+        eyebrow="Research"
+        title="RF measurement, biomedical systems, and intelligent interpretation."
+        description="A connected workflow built around physical design, controlled experiments, and models grounded in measured behavior."
+      />
+
+      <section className="mx-auto max-w-6xl px-6 pb-20">
+        <ResearchSystemDiagram />
+      </section>
+
+      <section className="border-y border-white/10 bg-slate-950/35">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <p className="section-eyebrow">Current work</p>
+          <h2 className="section-title">Three layers of evidence</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {RESEARCH_LAYERS.map((layer) => (
+              <article className="evidence-panel" key={layer.code}>
+                <span>{layer.code}</span>
+                <h3>{layer.title}</h3>
+                <ul>
+                  {layer.points.map((point) => <li key={point}>{point}</li>)}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <p className="section-eyebrow">Publications</p>
+        <h2 className="section-title">Undergraduate antenna research</h2>
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          {publications.map((publication, index) => (
+            <article className="publication-panel" key={publication.title}>
+              <span>0{index + 1}</span>
+              <h3>{publication.title}</h3>
+              <p className="publication-venue">{publication.venue}</p>
+              <p>{publication.desc}</p>
+              {publication.url && (
+                <a href={publication.url} target="_blank" rel="noreferrer">View DOI →</a>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 bg-slate-950/35">
+        <div className="mx-auto max-w-6xl px-6 py-16">
+          <p className="section-eyebrow">PhD direction</p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            {["Intelligent RF sensing", "Hardware-integrated ML systems", "Signal processing", "AI-enabled biomedical devices"].map((item) => (
+              <span className="direction-chip" key={item}>{item}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }

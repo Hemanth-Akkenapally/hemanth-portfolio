@@ -1,5 +1,8 @@
 import "./globals.css";
 import { Fraunces, Figtree } from "next/font/google";
+import { SiteFooter } from "../components/SiteFooter";
+import { SiteHeader } from "../components/SiteHeader";
+import RFFieldBackground from "../components/RFFieldBackground";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -18,13 +21,13 @@ const figtree = Figtree({
 
 export const metadata = {
   metadataBase: new URL("https://hemanth-akkenapally.vercel.app"),
-  title: "Hemanth Akkenapally | Data Science & Engineering Portfolio",
+  title: "Hemanth Akkenapally | RF, Biomedical Systems & Machine Learning",
   description:
-    "Portfolio of Hemanth Akkenapally — MS Data Science (UMBC). Data scientist, data engineer, and systems professional with experience in ML, NLP, cloud platforms, and analytics.",
+    "Portfolio of Hemanth Akkenapally, an RF and biomedical systems engineer with an MPS in Data Science from UMBC and experience in HFSS, VNA measurements, signal analysis, and machine learning.",
   openGraph: {
-    title: "Hemanth Akkenapally | Data Science & Engineering Portfolio",
+    title: "Hemanth Akkenapally | RF, Biomedical Systems & Machine Learning",
     description:
-      "Data scientist and engineer with experience in ML, NLP, cloud platforms, ETL pipelines, and analytics. MS Data Science, UMBC.",
+      "RF and biomedical systems engineer working across HFSS simulation, VNA measurements, signal analysis, data engineering, and machine learning.",
     siteName: "Hemanth Akkenapally Portfolio",
     images: [
       {
@@ -39,9 +42,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Hemanth Akkenapally | Data Science & Engineering Portfolio",
+    title: "Hemanth Akkenapally | RF, Biomedical Systems & Machine Learning",
     description:
-      "Data scientist and engineer with experience in ML, NLP, cloud platforms, ETL pipelines, and analytics.",
+      "RF and biomedical systems engineer working across simulation, experimental measurement, signal analysis, and machine learning.",
     images: ["/profile.jpeg"],
   },
 };
@@ -49,7 +52,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${figtree.variable}`}>
-      <body>{children}</body>
+      <body>
+        <div className="bg-scene" aria-hidden="true">
+          <RFFieldBackground />
+        </div>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
