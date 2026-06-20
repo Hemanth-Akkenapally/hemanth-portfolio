@@ -475,91 +475,57 @@ h1, h2, h3, h4, h5 {
 
 .evidence-panel,
 .publication-panel,
-.nõ×­¢G§²ÚîÆ­yÔiagram } from "../../components/ResearchSystemDiagram";
-import { publications } from "../../lib/data";
+.education-panel {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  padding: 1.5rem;
+}
+.evidence-panel > span,
+.publication-panel > span,
+.education-panel > span,
+.project-index { color: #7dd3fc; font-size: 0.72rem; font-weight: 700; }
+.evidence-panel h3,
+.publication-panel h3,
+.education-panel h3 { margin-top: 1rem; color: #f8fafc; font-size: 1.25rem; font-weight: 700; }
+.evidence-panel ul { margin-top: 1.2rem; display: grid; gap: 0.65rem; }
+.evidence-panel li { color: #cbd5e1; font-size: 0.84rem; line-height: 1.6; }
+.evidence-panel li::before { content: "+"; margin-right: 0.55rem; color: #34d399; }
+.publication-panel > p { margin-top: 0.9rem; color: #94a3b8; font-size: 0.84rem; line-height: 1.7; }
+.publication-panel .publication-venue { color: #6ee7b7; }
+.publication-panel a { display: inline-block; margin-top: 1.2rem; color: #7dd3fc; font-size: 0.8rem; font-weight: 700; }
+.education-panel p { margin-top: 0.65rem; color: #94a3b8; }
+.education-panel strong { display: block; margin-top: 1.5rem; color: #6ee7b7; font-size: 0.85rem; }
 
-export const metadata = {
-  title: "Research | Hemanth Akkenapally",
-  description: "RF catheter research, experimental signal analysis, machine learning, and antenna publications by Hemanth Akkenapally.",
-};
+.experience-timeline { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.experience-row {
+  display: grid;
+  grid-template-columns: 3.5rem 10rem 1fr;
+  gap: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-block: 2rem;
+}
+.experience-marker { display: grid; width: 2.6rem; height: 2.6rem; place-items: center; border: 1px solid rgba(125, 211, 252, 0.4); border-radius: 50%; color: #7dd3fc; font-size: 0.72rem; font-weight: 700; }
+.experience-period { padding-top: 0.55rem; color: #94a3b8; font-size: 0.8rem; }
+.experience-content h2 { color: #f8fafc; font-size: 1.45rem; }
+.experience-role { margin-top: 0.3rem; color: #6ee7b7; font-size: 0.9rem; }
+.experience-content ul { margin-top: 1rem; display: grid; gap: 0.55rem; }
+.experience-content li { color: #cbd5e1; font-size: 0.86rem; line-height: 1.6; }
+.experience-content li::before { content: "+"; margin-right: 0.55rem; color: #38bdf8; }
 
-const RESEARCH_LAYERS = [
-  {
-    code: "SIM",
-    title: "Electromagnetic design",
-    points: ["Catheter electrodes and assemblies in Ansys HFSS", "Design evaluation before manufacturing release"],
-  },
-  {
-    code: "MEAS",
-    title: "Experimental measurement",
-    points: ["VNA S-parameters across power and frequency", "Oscilloscope, telemetry, and experimental metadata"],
-  },
-  {
-    code: "MODEL",
-    title: "Signal and model interpretation",
-    points: ["Ninth-order low-pass filtering", "Predictive analysis of lesion depth and microbubble formation"],
-  },
-];
+.skill-group { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem; }
+.skill-group h3 { color: #f8fafc; font-size: 1rem; font-weight: 700; }
 
-export default function ResearchPage() {
-  return (
-    <main>
-      <PageIntro
-        eyebrow="Research"
-        title="RF measurement, biomedical systems, and intelligent interpretation."
-        description="A connected workflow built around physical design, controlled experiments, and models grounded in measured behavior."
-      />
-
-      <section className="mx-auto max-w-6xl px-6 pb-20">
-        <ResearchSystemDiagram />
-      </section>
-
-      <section className="border-y border-white/10 bg-slate-950/35">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <p className="section-eyebrow">Current work</p>
-          <h2 className="section-title">Three layers of evidence</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {RESEARCH_LAYERS.map((layer) => (
-              <article className="evidence-panel" key={layer.code}>
-                <span>{layer.code}</span>
-                <h3>{layer.title}</h3>
-                <ul>
-                  {layer.points.map((point) => <li key={point}>{point}</li>)}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <p className="section-eyebrow">Publications</p>
-        <h2 className="section-title">Undergraduate antenna research</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {publications.map((publication, index) => (
-            <article className="publication-panel" key={publication.title}>
-              <span>0{index + 1}</span>
-              <h3>{publication.title}</h3>
-              <p className="publication-venue">{publication.venue}</p>
-              <p>{publication.desc}</p>
-              {publication.url && (
-                <a href={publication.url} target="_blank" rel="noreferrer">View DOI â†’</a>
-              )}
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-t border-white/10 bg-slate-950/35">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <p className="section-eyebrow">PhD direction</p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            {["Intelligent RF sensing", "Hardware-integrated ML systems", "Signal processing", "AI-enabled biomedical devices"].map((item) => (
-              <span className="direction-chip" key={item}>{item}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+@media (max-width: 767px) {
+  .profile-map { min-height: 25rem; }
+  .profile-map-center { width: 8rem; height: 8rem; }
+  .profile-node { width: 7.5rem; padding: 0.65rem; }
+  .metric-cell:nth-child(2) { border-right: 0; }
+  .metric-cell:nth-child(-n + 2) { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+  .research-flow { grid-template-columns: 1fr; gap: 0; padding: 1.25rem; }
+  .research-stage { min-height: 6.5rem; flex-direction: row; text-align: left; }
+  .research-connector { left: 1.6rem; top: calc(50% + 1.6rem); width: 1px; height: calc(100% - 3.2rem); }
+  .experience-row { grid-template-columns: 3rem 1fr; gap: 1rem; }
+  .experience-period { grid-column: 2; grid-row: 1; }
+  .experience-content { grid-column: 2; }
 }
